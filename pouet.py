@@ -53,8 +53,6 @@ if st.session_state["is_logged"] == False:
 # submit sample form if logged
 if st.session_state["is_logged"] == True:
     st.button("Déconnexion", on_click=change_is_logged_session)
-    # loading file and sending sample for prediction
-    st.text("Bienvenue, vous allez pouvoir connaitre la résistance de votre béton en un clic !")
 
     col1, col2 = st.columns(2)
     col3, col4, col5 = st.columns(3)
