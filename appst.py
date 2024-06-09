@@ -76,7 +76,7 @@ if st.session_state["is_logged"] == True:
         if response.status_code == 200:
             response = requests.post(url_prediction, json={'text': user_input})
             prediction = response.json()['prediction']
-            col7.write(f'La prédiction pour "{user_input}" est: {prediction}')
+            col7.write(f'La prédiction pour "{user_input}" est: {prediction} MW')
 ]
         else:
             st.error(f"Erreur lors de l'appel de l'API de prédiction : {response.status_code}")
