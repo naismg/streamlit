@@ -72,7 +72,7 @@ if st.session_state["is_logged"] == True:
         prediction = "123.45 MW"
 
         # Insérer la prédiction dans la base de données
-        data, count = supabase.table('predWindturbine').insert({"value":user_input,"pred": prediction}).execute()
+        data, count = supabase.table('predWindturbine').insert({"id":1,"value":user_input,"pred": prediction}).execute()
 
         if count > 0:
             st.success("La prédiction a été envoyée avec succès à la base de données!")
