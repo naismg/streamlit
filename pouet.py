@@ -69,7 +69,7 @@ if st.session_state["is_logged"] == True:
 
     if st.button("Predict"):
         # Simuler une prédiction pour la démonstration
-        prediction = "123.45 MW"
+        prediction = "123.45"
 
         # Insérer la prédiction dans la base de données
         data, count = supabase.table('predWindturbine').insert({"id":1,"value":user_input,"pred": prediction}).execute()
