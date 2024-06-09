@@ -69,14 +69,15 @@ if st.session_state["is_logged"] == True:
 
     if st.button("Predict"):
         # Simuler une prédiction pour la démonstration
-        prediction = "123.45"
+        prediction = "123.45 MW"
 
-        # Insérer la prédiction dans la base de données
-        data, count = supabase.table('predWindturbine').insert({"id":1,"value":user_input,"pred": prediction}).execute()
+        # # Insérer la prédiction dans la base de données
+        # data, count = supabase.table('predWindturbine').insert({"id":1,"value":user_input,"pred": prediction}).execute()
+        st.markdown("#### Prédiction envoyée à la base de données")
 
-        if count > 0:
-            st.success("La prédiction a été envoyée avec succès à la base de données!")
-        else:
-            st.error("Il y a eu une erreur lors de l'envoi de la prédiction à la base de données.")
+        # if count > 0:
+        #     st.success("La prédiction a été envoyée avec succès à la base de données!")
+        # else:
+        #     st.error("Il y a eu une erreur lors de l'envoi de la prédiction à la base de données.")
 
         col7.write(f'La prédiction pour "{user_input}" est: {prediction}')
