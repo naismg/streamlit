@@ -68,16 +68,20 @@ if st.session_state["is_logged"] == True:
     user_input = col4.text_input("Entrez les données de prédiction", "")
 
     if st.button("Predict"):
-        # Simuler une prédiction pour la démonstration
-        prediction = "123.45545 MW"
+        url_prediction = "https://renderModelAPI.onrender.com/predict"
+
+
+        response = requests.post(url_prediction, json=data)
+
+        if response.status_code == 200:
+            response = requests.post(url_prediction, json={'text': user_input})
+            prediction = response.json()['prediction']
+            col7.write(f'La prédiction pour "{user_input}" est: {prediction}')
+]
+        else:
+            st.error(f"Erreur lors de l'appel de l'API de prédiction : {response.status_code}")
 
         # # Insérer la prédiction dans la base de données
-        # data, count = supabase.table('predWindturbine').insert({"id":1,"value":user_input,"pred": prediction}).execute()
+        data, count = supabase.table('predWindturbine').insert({"value":user_input,"pred": prediction}).execute()
         st.markdown("#### Prédiction envoyée à la base de données")
 
-        # if count > 0:
-        #     st.success("La prédiction a été envoyée avec succès à la base de données!")
-        # else:
-        #     st.error("Il y a eu une erreur lors de l'envoi de la prédiction à la base de données.")
-
-        col7.write(f'La prédiction pour "{user_input}" est: {prediction}')
